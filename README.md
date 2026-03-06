@@ -28,6 +28,11 @@ IoT Firmware sees:       MemGate translates:        Linux Host sees:
 
 ---
 
+> [!IMPORTANT]
+> This module was initially developed under the name memiosim. Some files, tests, or internal references may still contain this name.
+> The original memiosim implementation represents the core functionality of the project. It has now been updated, renamed to MemuGate, and published as an open-source project.
+
+
 ## Features
 
 - ✅ **Memory Gateway** - Bridge guest ↔ host memory spaces
