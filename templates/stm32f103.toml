@@ -1,0 +1,69 @@
+# STM32F103 - ARM Cortex-M3 Microcontroller
+# Example configuration showing all options
+
+[device]
+name = "STM32F103"
+description = "ARM Cortex-M3 Microcontroller (128KB Flash, 20KB SRAM)"
+max_memory = "2GB"
+
+[memory]
+# Allocate all memory at once (true) or lazily (false)
+allocate_at_once = true
+
+# Page size: "4KB", "64KB", or "region"
+page_size = "4KB"
+
+# Number of address spaces (1 = single, 2+ = multiple)
+address_spaces = 1
+
+# Memory regions
+[[regions]]
+name = "Flash"
+guest_address = "0x08000000"
+size = "128KB"
+permissions = "RX"  # Read + Execute
+type = "flash"
+
+[[regions]]
+name = "SRAM"
+guest_address = "0x20000000"
+size = "20KB"
+permissions = "RW"  # Read + Write
+type = "ram"
+
+[[regions]]
+name = "Peripheral_APB1"
+guest_address = "0x40000000"
+size = "1KB"
+permissions = "RW"
+type = "mmio"
+
+[[regions]]
+name = "Peripheral_APB2"
+guest_address = "0x40010000"
+size = "1KB"
+permissions = "RW"
+type = "mmio"
+
+[[regions]]
+name = "Peripheral_AHB"
+guest_address = "0x40020000"
+size = "1KB"
+permissions = "RW"
+type = "mmio"
+
+[[regions]]
+name = "GPIOA"
+guest_address = "0x40010800"
+size = "1KB"
+permissions = "RW"
+type = "mmio"
+device = "gpio"  # Optional: device handler name
+
+[[regions]]
+name = "UART1"
+guest_address = "0x40013800"
+size = "1KB"
+permissions = "RW"
+type = "mmio"
+device = "uart"  # Optional: device handler name

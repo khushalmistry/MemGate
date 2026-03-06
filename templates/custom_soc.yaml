@@ -1,0 +1,119 @@
+# Custom Large SoC - Example of complex custom hardware
+# Shows how to define large memory regions with different options
+
+[device]
+name = "Custom_SoC"
+description = "Large Custom SoC for IoT with multiple memory regions"
+max_memory = "2GB"
+
+[memory]
+# Lazy allocation - allocate memory only when needed
+allocate_at_once = false
+
+# Large pages for large memory
+page_size = "64KB"
+
+# Single address space
+address_spaces = 1
+
+# Large DDR RAM
+[[regions]]
+name = "DDR_RAM"
+guest_address = "0x80000000"
+size = "1GB"
+permissions = "RWX"  # Read + Write + Execute
+type = "ram"
+
+# Filesystem
+[[regions]]
+name = "Filesystem"
+guest_address = "0x90000000"
+size = "256MB"
+permissions = "RW"
+type = "storage"
+
+# DSP acceleration memory
+[[regions]]
+name = "DSP_Memory"
+guest_address = "0x60000000"
+size = "64MB"
+permissions = "RW"
+type = "ram"
+
+# Custom IP accelerator
+[[regions]]
+name = "Accelerator"
+guest_address = "0xBBBB0000"
+size = "1MB"
+permissions = "RW"
+type = "mmio"
+device = "accelerator"
+
+# Multiple UARTs
+[[regions]]
+name = "UART0"
+guest_address = "0x12345000"
+size = "4KB"
+permissions = "RW"
+type = "mmio"
+device = "uart"
+
+[[regions]]
+name = "UART1"
+guest_address = "0x12346000"
+size = "4KB"
+permissions = "RW"
+type = "mmio"
+device = "uart"
+
+[[regions]]
+name = "UART2"
+guest_address = "0x12347000"
+size = "4KB"
+permissions = "RW"
+type = "mmio"
+device = "uart"
+
+# GPIO ports
+[[regions]]
+name = "GPIOA"
+guest_address = "0xAAAAAAAA"
+size = "1KB"
+permissions = "RW"
+type = "mmio"
+device = "gpio"
+
+[[regions]]
+name = "GPIOB"
+guest_address = "0xAAAAAB00"
+size = "1KB"
+permissions = "RW"
+type = "mmio"
+device = "gpio"
+
+# SPI
+[[regions]]
+name = "SPI"
+guest_address = "0x12340000"
+size = "4KB"
+permissions = "RW"
+type = "mmio"
+device = "spi"
+
+# I2C
+[[regions]]
+name = "I2C"
+guest_address = "0x12341000"
+size = "4KB"
+permissions = "RW"
+type = "mmio"
+device = "i2c"
+
+# Ethernet
+[[regions]]
+name = "Ethernet"
+guest_address = "0x12342000"
+size = "8KB"
+permissions = "RW"
+type = "mmio"
+device = "ethernet"

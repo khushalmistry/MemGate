@@ -1,0 +1,24 @@
+# Build artifacts
+/target/
+**/*.rs.bk
+*.pdb
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Development files
+*.tmp
+*.log
+*.bak
+
+# Test outputs
+/test-results/
+/coverage/
+
+# Benchmark results
+/target/criterion/

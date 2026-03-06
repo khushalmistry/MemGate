@@ -1,0 +1,44 @@
+{
+  "device": {
+    "name": "Minimal_IoT",
+    "description": "Minimal IoT device configuration",
+    "max_memory": "128MB"
+  },
+  "memory": {
+    "allocate_at_once": true,
+    "page_size": "4KB",
+    "address_spaces": 1
+  },
+  "regions": [
+    {
+      "name": "RAM",
+      "guest_address": "0x00000000",
+      "size": "64KB",
+      "permissions": "RW",
+      "type": "ram"
+    },
+    {
+      "name": "Flash",
+      "guest_address": "0x10000000",
+      "size": "256KB",
+      "permissions": "RX",
+      "type": "flash"
+    },
+    {
+      "name": "UART",
+      "guest_address": "0x20000000",
+      "size": "1KB",
+      "permissions": "RW",
+      "type": "mmio",
+      "device": "uart"
+    },
+    {
+      "name": "GPIO",
+      "guest_address": "0x20000100",
+      "size": "1KB",
+      "permissions": "RW",
+      "type": "mmio",
+      "device": "gpio"
+    }
+  ]
+}
